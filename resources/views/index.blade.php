@@ -6,11 +6,13 @@
         <link rel="stylesheet" href="{{asset('css/index.css')}}">
         <title>Abici</title>
     </head>
+
     <body >
         @include('navegacion.nav')
-    <div class="fotodomi">
-        <img src="" alt="Foto Domi">
-    </div>
+        @yield('contenido')
+    <footer>
+        <p>&copy; 2023 Abici Domicilios. Todos los derechos reservados.</p>
+    </footer>
        
     </body>
 </html>
