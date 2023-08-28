@@ -25,11 +25,13 @@ body {
 
 /* Estilos para el contenido principal */
 .hero {
-    background-image: url('images/hero-bg.jpg');
+    background-image: url('../img/Tunja-Colombia.jpg'); 
     background-size: cover;
+    background-repeat: no-repeat;
     color: #000000;
     text-align: center;
-    padding: 150px 0;
+    padding: 200px 0;
+    
 }
 
 .hero h1 {
@@ -126,4 +128,52 @@ footer {
         margin: 0 5%;
         margin-bottom: 20px;
     }
+}
+
+/* Carucel */
+
+.carousel-container {
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+}
+
+/* Opcional: Estilos para los controles del carrusel */
+.carousel-controls {
+    text-align: center;
+}
+
+.carousel-controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+/* Opcional: Estilos para los puntos indicadores */
+.carousel-indicators {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.carousel-indicators span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel-indicators span.active {
+    background-color: #333;
 }
