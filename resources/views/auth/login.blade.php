@@ -1,7 +1,11 @@
+<link rel="stylesheet" href="{{asset('css/navegacion.css')}}">
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-thin-straight/css/uicons-thin-straight.css'>
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <div class="nav-left">
+                <p><i class="fi fi-br-biking-mountain"></i> ABICI</p>
+            </div>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
