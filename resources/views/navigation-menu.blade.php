@@ -14,7 +14,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="nav-left flex items-center">
-                    <a class="text-decoration-none" href="{{ route('welcome') }}">
+                    <a class="text-decoration-none" href="{{ route('dashboard') }}">
                         <p class="abici"><i class="fi fi-br-biking-mountain"></i> ABICI</p>
                     </a>
                 </div>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden sm:flex mt-3">
                     <form class="relative mr-2" action="" method="GET">
                         @csrf
                         <input type="text" name="query" class="border border-gray-300 bg-gray-100 h-10 px-5 pr-10 rounded-full text-sm "

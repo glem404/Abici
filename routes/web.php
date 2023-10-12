@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PedidosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,16 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+/* Rutas pedido  cliente*/ 
+Route::get('domicilio/crearpedido',[App\Http\Controllers\PedidosController::class,'verificar'])->name('domicilio.crearpedido');
+Route::post('domicilio/create',[App\Http\Controllers\PedidosController::class,'create'])->name('domicilio.create');
+
+Route::post('domicilio/guardar',[App\Http\Controllers\PedidosController::class,'store'])->name('domicilio.store');
+
+/* Rutas pedido  admin */
+
+Route::get('administrador/pedido',[App\Http\Controllers\PedidosController::class,'prueba'])->name('administrador.pedido');
+
+
 

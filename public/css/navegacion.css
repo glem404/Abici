@@ -4,12 +4,11 @@
     --colorterciario: #66FF99;
     --colortraslucido: rgba(255, 255, 255, 0.434);
 
-  }
+}
 
 
 /* Estilos para el contenedor de navegación */
 .contenedor-nav {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

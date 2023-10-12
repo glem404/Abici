@@ -15,7 +15,7 @@
 
 .fotoprincipal{
     width: 100%;
-    height: auto;
+    height:max-content;
     position: absolute;
     top: 0;
     left: 0;

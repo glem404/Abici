@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="{{asset('css/navegacion.css')}}">
-<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-thin-straight/css/uicons-thin-straight.css'>
+<link rel="stylesheet" href="{{asset('css/login.css')}}">
+
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
             <div class="nav-left">
-                <p><i class="fi fi-br-biking-mountain"></i> ABICI</p>
+                <img class="logologin" src="{{asset('img/LogoAbici.jpg')}}" alt="">
             </div>
         </x-slot>
 
@@ -16,7 +17,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form class="formulariologin" method="POST" action="{{ route('login') }}">
             @csrf
 
             <div>
@@ -43,7 +44,7 @@
                     </a>
                 @endif
 
-                <x-button class="ml-4">
+                <x-button class="ml-4 color-">
                     {{ __('Log in') }}
                 </x-button>
             </div>

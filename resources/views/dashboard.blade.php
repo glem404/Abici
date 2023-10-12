@@ -5,7 +5,7 @@
     <div class="hero-content">
         <h1>Bienvenido a Abici Domicilios</h1>
         <p>Tu solución rápida para recibir tus platillos favoritos desde los mejores restaurantes y lugares asociados.</p>
-        <a class="bton">Pedir Domicilio</a>
+        <a href="{{ route('domicilio.crearpedido') }}" class="bton" >Pedir Domicilio</a>
     </div>
 </section>
 <section class="services">
