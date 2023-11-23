@@ -3,23 +3,23 @@
 
 <main>
     <div class="content-form">
-        <h1>Verifica Tus Datos</h1>
-        <form class="form-crearpedido" action="{{route('domicilio.create')}}" method="POST">
+        <h1> A UN PASO DE PEDIR TU DOMI!</h1>
+        <form class="form-crearpedido" action="{{route('domicilio.verificar')}}" method="POST">
             <fieldset>
                 <legend>Por favor, ingrese su tipo de documento y su número de identificación:</legend>
                 @csrf <!-- Agrega esto si estás utilizando Laravel para proteger contra CSRF -->
                 <div>
                     <label for="tipoDocumento">Tipo de Documento:</label>
                     <select id="tipoDocumento" name="tipoDocumento">
-                        <option value="cc">Cédula de Ciudadania</option>
-                        <option value="pasaporte">Targeta Identidad</option>
+                        <option value="CC">Cédula de Ciudadania</option>
+                        <option value="TI">Targeta Identidad</option>
                     </select>
                 </div>
                 <div>
-                    <label for="numero_identificacion">Número de Identificación:</label>
-                    <input type="number" id="numero_identificacion" name="numero_identificacion" required>
+                    <label for="numeroidentificacion">Número de Identificación:</label>
+                    <input type="number" id="numeroidentificacion" name="numeroidentificacion" required>
                 </div>
-                <button  type="submit">Verificar</button>
+                <button  type="submit">Verificar</button>       
             </fieldset>
         </form>
     </div>

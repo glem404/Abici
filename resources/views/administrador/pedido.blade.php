@@ -1,39 +1,58 @@
-<link rel="stylesheet" href="{{asset('css/pedidoadmin.css')}}">
 
+<link rel="stylesheet" href="{{asset('css/pedidoadmin.css')}}">
 <x-app-layout></x-app-layout>
 <section>
-    <h1 class="custom-title">
-        Datos del Pedido
-    </h1>
-    <div>
-        <div>
-            <form action="">
-                @csrf
-                <fieldset class="custom-fieldset">
-                    <div class="custom-input-container">
-                        <label for="nombre" class="custom-label">Nombre Del Cliente</label>
-                        <input type="text" name="nombre" value="Samuel Hernesto Perez" readonly class="custom-input">
-                    </div>
-                    <div class="custom-textarea-container">
-                        <label for="datospedido" class="custom-label">Datos Del Pedido</label>
-                        <textarea name="datospedido" id="" readonly class="custom-textarea"> Docena de Manzanas Verdes </textarea>
-                    </div>
-                    <div class="custom-textarea-container">
-                        <label for="descripcion" class="custom-label">Especificaciones Del Pedido</label>
-                        <textarea name="descripcion" id="" readonly class="custom-textarea">Esto Puede Ser Opcional</textarea>
-                    </div>
-                    <div class="custom-input-container">
-                        <label for="direccion" class="custom-label">Dirección</label>
-                        <input type="text" name="direccion" value="kra 9 # 11-11" readonly class="custom-input">
-                    </div>
-                    <div class="custom-input-container">
-                        <label for="telefono" class="custom-label">Numero De Telefono</label>
-                        <input type="text" name="telefono" value="3208730722" readonly class="custom-input">
-                    </div>
-                <button type="submit" class="btn-tomarpedido">Tomar Pedido <i class="fas fa-save"></i></button>
-    
-                </fieldset>
-            </form>
-        </div>
+    @if(session('mensaje'))
+    <div class="alert alert-danger">
+        {{ session('mensaje') }}
     </div>
+@endif
+    <div>
+        @if(isset($pedido))
+        <!-- Mostrar los datos del pedido -->
+        <h2>Datos del Pedido</h2>
+        <p>Productos: {{ $pedido['productos'] }}</p>
+        <p>Descripción: {{ $pedido['descripcion'] }}</p>
+        <p>Dirección: {{ $pedido['direccion'] }}</p>
+    @endif
+    
+    @if(isset($nombreCompleto) && isset($idUsuario))
+        <h2>Detalles del usuario:</h2>
+        <p>Nombre Completo: {{ $nombreCompleto }}</p>
+        <p>Telefono: {{$telefono}}</p>
+        <p>ID de Usuario: {{ $idUsuario }}</p>
+        <!-- Otros detalles del usuario que desees mostrar -->
+    @else
+        <p>No se han proporcionado detalles del usuario.</p>
+    @endif
+    </div>
+<!-- Otros detalles del usuario que desees mostrar -->
+
+    <!-- Agregar un formulario para editar los datos -->
+    <h2>Editar Pedido</h2>
+    <form action="" method="POST">
+        @csrf
+        <!-- Campos del formulario con valores predefinidos -->
+        <input type="hidden" name="productos" value="{{ $pedido['productos'] }}">
+        <input type="hidden" name="descripcion" value="{{ $pedido['descripcion'] }}">
+        <input type="hidden" name="direccion" value="{{ $pedido['direccion'] }}">
+        <input type="hidden" name="idusuario" value="{{$idUsuario}}">
+
+        <!-- Campos editables -->
+        <div class="mb-3">
+            <label for="tiempoestimado" class="form-label">Tiempo estimado  Min:</label>
+            <input type="number" name="tiempoestimado" id="tiempoestimado" class="form-control" rows="3" placeholder="Tiempo aproximado que tardara el servicio">
+        </div>
+        <div class="mb-3">
+            <label for="horaestimada" class="form-label">Hora Estimada De Entrega:</label>
+            <input type="time" name="horaestimada" id="horaestimada" class="form-control" rows="3" placeholder="Hora aproximada de entrega y finalización del servicio">
+        </div>
+        <select name="domiciliario">
+            <option value="">Asignar Domiciliario</option>
+            @foreach($usuarios as $usuario)
+                <option value="{{ $usuario->id }}" @if($usuario->id == $idUsuario) selected @endif>{{ $usuario->name }} {{ $usuario->apellidos }}</option>
+            @endforeach
+        </select>
+        <button type="submit" class="btn btn-primary">Actualizar Pedido</button>
+    </form>
 </section>

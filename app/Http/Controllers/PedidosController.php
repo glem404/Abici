@@ -4,63 +4,66 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\pedidos; 
+use App\Models\User; 
 
 class PedidosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-     public function prueba()
-     {
-         //
-         return view ('administrador/pedido');
-     }
-
-    public function index()
+     
+    public function index(Request $request)
     {
-        //
+       
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function verificar()
+    public function crearpedido()
     {
         //
-        return view ('pedidos/crearpedido');
+        $direccion = auth()->user()->direccion;
+        return view ('pedidos/create', ['direccion' => $direccion]);
     }
 
     public function create()
     {
         //
-        return view ('pedidos/create');
+        return view('pedidos/create');
+        
     }
 
     /**
      * Store a newly created resource in storage.
      */
+    public function guardardatos(Request $request)
+    {
+       
+       
+        // Crear un nuevo objeto Pedido con los datos del formulario
+        $pedido = new Pedidos();
+        $pedido->productos = $request->input('productos');
+        $pedido->DescripcionProductos = $request->input('descripcion');
+        $pedido->direccion = $request->input('direccion');
+        $pedido->fechahora = $request->input('fechahora');
+        $idCliente = Auth()->User()->id;
+        $pedido->idcliente = $idCliente;
+        // Guardar el pedido en la base de datos
+        $pedido->save();
+
+        // Redirigir a la página que desees después de guardar el pedido
+        return redirect()->route('dashboard');
+  
+    }
     public function store(Request $request)
     {
     
         // Crear un nuevo pedido con los datos del formulario
-        $pedido = new pedidos();
-        $pedido->idcliente = $request->input('idcliente');
-        $pedido->iddomiciliario = $request->input('iddomiciliario');
-        $pedido->idadministracion = $request->input('idadministracion');
-        $pedido->direccion = $request->input('direccion');
-        $pedido->fechahora = $request->input('fechahora');
-        $pedido->productos = $request->input('productos');
-        $pedido->tiempoestimadomin = $request->input('tiempoestimadomin');
-        $pedido->horaestimada = $request->input('horaestimada');
-        $pedido->descripcionproductos = $request->input('descripcionproductos');
-    
-        // Guardar el pedido en la base de datos
-        $pedido->save();
-    
-        // Redirigir a la página de inicio o a donde desees después de guardar el pedido
-        return redirect()->route('dashboard')->with('success', 'Pedido creado con éxito');
+  
     }
+
 
     /**
      * Display the specified resource.

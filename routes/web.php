@@ -28,15 +28,18 @@ Route::middleware([
     })->name('dashboard');
 });
 
-/* Rutas pedido  cliente*/ 
-Route::get('domicilio/crearpedido',[App\Http\Controllers\PedidosController::class,'verificar'])->name('domicilio.crearpedido');
-Route::post('domicilio/create',[App\Http\Controllers\PedidosController::class,'create'])->name('domicilio.create');
 
+
+
+/* Rutas pedido  cliente pedido*/ 
+Route::get('domicilio/crearpedido',[App\Http\Controllers\PedidosController::class,'crearpedido'])->name('domicilio.crearpedido');
+Route::post('domicilio/verificar',[App\Http\Controllers\PedidosController::class,'verificarDocumento'])->name('domicilio.create');
 Route::post('domicilio/guardar',[App\Http\Controllers\PedidosController::class,'store'])->name('domicilio.store');
+
 
 /* Rutas pedido  admin */
 
-Route::get('administrador/pedido',[App\Http\Controllers\PedidosController::class,'prueba'])->name('administrador.pedido');
+Route::post('pedido/guardar',[App\Http\Controllers\PedidosController::class,'guardardatos'])->name('pedido.guardar');
 
 
 

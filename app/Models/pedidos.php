@@ -9,5 +9,5 @@ class pedidos extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idpedido';
-    protected $fillable = ['idpedido','idcliente','iddomiciliario','idadministracion','direccion','fechahora','productos','tiempoestimadomin','horaestimada','descripcionproductos'];
+    protected $fillable = ['idpedido','idcliente','iddomiciliario','idadministracion','direccion','fechahora','productos','tiempoestimadomin','horaestimada','descripcionproductos','estado'];
 }
